@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project MetadataType="monolithic">
+   
+   <EntryPoints Location="Root"/>
+   
+   <Files Location="Root">
+      <File Location="ispalindrome.m">
+         <Info>
+            <Category UUID="FileClassCategory">
+               <Label UUID="design"/>
+            </Category>
+         </Info>
+      </File>
+   </Files>
+   
+   <ProjectData Location="Root"/>
+   
+   <Categories Location="Root">
+      
+      <Category Location="FileClassCategory">
+         
+         <Info DataType="None" Name="Classification" ReadOnly="1" SingleValued="1"/>
+         
+         <Label Location="design">
+            
+            <Info Name="Design"/>
+         
+         </Label>
+         
+         <Label Location="derived">
+            
+            <Info Name="Derived"/>
+         
+         </Label>
+         
+         <Label Location="artifact">
+            
+            <Info Name="Artifact"/>
+         
+         </Label>
+         
+         <Label Location="convenience">
+            
+            <Info Name="Convenience"/>
+         
+         </Label>
+         
+         <Label Location="other">
+            
+            <Info Name="Other"/>
+         
+         </Label>
+         
+         <Label Location="none">
+            
+            <Info Name="None"/>
+         
+         </Label>
+      
+      </Category>
+      
+      <Category Location="ReviewCategory">
+         
+         <Info DataType="String" Name="Review" ReadOnly="1" SingleValued="1"/>
+         
+         <Label Location="toReview">
+            
+            <Info Name="To Review"/>
+         
+         </Label>
+         
+         <Label Location="approved">
+            
+            <Info Name="Approved"/>
+         
+         </Label>
+         
+         <Label Location="rejected">
+            
+            <Info Name="Rejected"/>
+         
+         </Label>
+         
+         <Label Location="needMoreInfo">
+            
+            <Info Name="More Information Required"/>
+         
+         </Label>
+      
+      </Category>
+   
+   </Categories>
+   
+   <Extensions Location="Root"/>
+   
+   <Info Location="ProjectData">
+      
+      <Info Name="untitled"/>
+   
+   </Info>
+
+</project>
