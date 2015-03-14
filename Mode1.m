@@ -130,7 +130,7 @@ ScoreInfoHd1 = text(50,50, 'Current Player:','FontName','Arial','FontSize',20,'H
 im = imread('sprite.png');
 t = 0;
 for n = 1:co
-Player(n) = image(im,'x',[RECT.COMMAND_DRAW(1,1)+6 RECT.COMMAND_DRAW(1,1)+2],'y',[RECT.COMMAND_DRAW(2,1)+10 RECT.COMMAND_DRAW(2,1)+2],'Visible','on');
+Player(n) = image(im,'x',[RECT.COMMAND_DRAW(1,1)+4 RECT.COMMAND_DRAW(1,1)+1],'y',[RECT.COMMAND_DRAW(2,1)+4 RECT.COMMAND_DRAW(2,1)+1],'Visible','on');
 t = t +1 ;
 person.Current(n).pos = [RECT.COMMAND_DRAW(1,1) RECT.COMMAND_DRAW(2,1)] ;
 end
@@ -153,12 +153,12 @@ while iterator ~= 1
         Winner = sprintf('Current Player %d wins!',n);
         set(ScoreInfoHd1,'Visible','on','String',Winner);
         pause(1);
-        set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+6 RECT.COMMAND_DRAW(1,end)+2]...
-        ,'y',[RECT.COMMAND_DRAW(2,end)+6 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
+        set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
+        ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
         break;
         end
-    set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+6+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2+2*n]...
-        ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+6+2*n RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1+2*n],'Visible','on');
+    set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
+        ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+4 RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1],'Visible','on');
     pause(1)
     if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) ~= 0
             pause(1)
@@ -171,12 +171,12 @@ while iterator ~= 1
             Winner = sprintf('Current Player %d wins!',n);
             set(ScoreInfoHd1,'Visible','on','String',Winner);
             pause(1);
-            set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+6 RECT.COMMAND_DRAW(1,end)+2]...
-            ,'y',[RECT.COMMAND_DRAW(2,end)+6 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
+            set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
+            ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
             break;
             end
-            set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+6+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2+2*n]...
-            ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+6+2*n RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1+2*n],'Visible','on');
+            set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
+            ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+4 RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1],'Visible','on');
             
     end
     n = n + 1;
