@@ -159,9 +159,26 @@ while iterator ~= 1
         end
     set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+6+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2+2*n]...
         ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+6+2*n RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1+2*n],'Visible','on');
-    
-   
     pause(1)
+    if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) ~= 0
+            pause(1)
+            luck = sprintf('Current Player: %d, Gets to move %d spaces',n,RECT.COMMAND_DRAW(5,person.Current(n).pos(1)));
+            set(ScoreInfoHd1,'Visible','on','String',luck);
+            pause(1);
+            person.Current(n).pos(1) = person.Current(n).pos(1)+RECT.COMMAND_DRAW(5,person.Current(n).pos(1));
+            person.Current(n).pos(2) = person.Current(n).pos(2)+RECT.COMMAND_DRAW(5,person.Current(n).pos(2));
+            if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
+            Winner = sprintf('Current Player %d wins!',n);
+            set(ScoreInfoHd1,'Visible','on','String',Winner);
+            pause(1);
+            set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+6 RECT.COMMAND_DRAW(1,end)+2]...
+            ,'y',[RECT.COMMAND_DRAW(2,end)+6 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
+            break;
+            end
+            set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+6+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2+2*n]...
+            ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+6+2*n RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1+2*n],'Visible','on');
+            
+    end
     n = n + 1;
     if n >= t+1;
         n = 1;
