@@ -160,6 +160,7 @@ while iterator ~= 1
     set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+6+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2+2*n]...
         ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+6+2*n RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1+2*n],'Visible','on');
     
+   
     pause(1)
     n = n + 1;
     if n >= t+1;
