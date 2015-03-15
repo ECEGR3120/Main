@@ -3,15 +3,11 @@ function Mode1
 BOARDGAME.RESOLUTION = [];       % Game Resolution, default at [256 144]
 BOARDGAME.WINDOW_SCALE = 2;     % The actual size of the window divided by resolution
 BOARDGAME.FLOOR_TOP_Y = [];      % The y position of upper crust of the floor.
-BOARDGAME.N_UPDATES_PER_SEC = [];
-BOARDGAME.FRAME_DURATION = [];
 BOARDGAME.COMMAND_TEXT_FILE = [];   % Initializing the Command text file
 BOARDGAME.DICEROLL_TEXT_FILE = [];  % Initializing the Roll text file
 RECT.COMMAND = [];
 BOARDGAME.DICEROLL = [];    % DICEROLL(a b) where a is roll number, and b is the player number
 RECT.COMMAND_DRAW = [];        % x-coordinate of the rectangle
-ScoreInfoHdl = [];
-
 
 
 %% Handles
@@ -20,7 +16,13 @@ ScoreInfoHdl = [];
 loadfiles();
 draw();
 numberofplayers();
-
+pause(1.5);
+exit = sprintf('The Game is now going to close.');
+set(ScoreInfoHd1,'Visible','on','String',exit);
+pause(1); 
+delete(MainFigureHdl);
+clear all;
+return;
 
 
 %% File Loading
@@ -80,7 +82,7 @@ function draw()
         %% Canvases:
         MainCanvas = uint8(zeros([BOARDGAME.RESOLUTION 3]));
 [r c] = size(RECT.COMMAND_DRAW);
-MainFigure = figure('Name','Mode 1 Test','Position',[MainFigureInitPos, MainFigureSize]);
+MainFigureHdl = figure('Name','Mode 1 Test','Position',[MainFigureInitPos, MainFigureSize]);
 axis off;
 hold on;
 for f = 1:c
@@ -150,16 +152,17 @@ while iterator ~= 1
         set(ScoreInfoHd1,'Visible','on','String',logo_dice);
         pause(1);
         if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
-        Winner = sprintf('Current Player %d wins!',n);
-        set(ScoreInfoHd1,'Visible','on','String',Winner);
         pause(1);
         set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
         ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
+        pause(1);
+        Winner = sprintf('Current Player %d wins!',n);
+        set(ScoreInfoHd1,'Visible','on','String',Winner);
         break;
         end
     set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
         ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+4 RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1],'Visible','on');
-    pause(1)
+    pause(0.5);
     if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) ~= 0
             pause(1)
             luck = sprintf('Current Player: %d, Gets to move %d spaces',n,RECT.COMMAND_DRAW(5,person.Current(n).pos(1)));
@@ -168,11 +171,12 @@ while iterator ~= 1
             person.Current(n).pos(1) = person.Current(n).pos(1)+RECT.COMMAND_DRAW(5,person.Current(n).pos(1));
             person.Current(n).pos(2) = person.Current(n).pos(2)+RECT.COMMAND_DRAW(5,person.Current(n).pos(2));
             if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
-            Winner = sprintf('Current Player %d wins!',n);
-            set(ScoreInfoHd1,'Visible','on','String',Winner);
             pause(1);
             set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
             ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
+            pause(1);
+            Winner = sprintf('Current Player %d wins!',n);
+            set(ScoreInfoHd1,'Visible','on','String',Winner);
             break;
             end
             set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
