@@ -130,6 +130,7 @@ function numberofplayers()
 [ro_1 co_1] = size(RECT.COMMAND_DRAW);
 ScoreInfoHd1 = text(50,50, 'Current Player:','FontName','Arial','FontSize',20,'HorizontalAlignment','center','Color',[1 1 1],'Visible','off');
 im = imread('sprite.png');
+im2 = imread('sprite2.png');
 t = 0;
 for n = 1:co
 Player(n) = image(im,'x',[RECT.COMMAND_DRAW(1,1)+4 RECT.COMMAND_DRAW(1,1)+1],'y',[RECT.COMMAND_DRAW(2,1)+4 RECT.COMMAND_DRAW(2,1)+1],'Visible','on');
@@ -146,10 +147,8 @@ while iterator ~= 1
     diceroll = BOARDGAME.DICEROLL(var_1,n);
     person.Current(n).pos(1) = person.Current(n).pos(1)+diceroll;
     person.Current(n).pos(2) = person.Current(n).pos(2)+diceroll;
-
-    
-    logo_dice = sprintf('Current Player: %d, Current Roll: %d',n,BOARDGAME.DICEROLL(var_1,n));
-        set(ScoreInfoHd1,'Visible','on','String',logo_dice);
+    logo_dice = sprintf('Current Player: %d, Current Roll: %d',n,BOARDGAME.DICEROLL(var_1,n));  
+    set(ScoreInfoHd1,'Visible','on','String',logo_dice);
         pause(1);
         if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
         pause(1);
@@ -160,7 +159,7 @@ while iterator ~= 1
         set(ScoreInfoHd1,'Visible','on','String',Winner);
         break;
         end
-    set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
+    set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+5 RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2]...
         ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+4 RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1],'Visible','on');
     pause(0.5);
     if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) ~= 0
@@ -175,11 +174,11 @@ while iterator ~= 1
             set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
             ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
             pause(1);
-            Winner = sprintf('Current Player %d wins!',n);
+            Winner = sprintf('Player %d wins!',n);
             set(ScoreInfoHd1,'Visible','on','String',Winner);
             break;
             end
-            set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+4+2*n RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+1+2*n]...
+            set(Player(n),'x',[RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+5 RECT.COMMAND_DRAW(1,person.Current(n).pos(1))+2]...
             ,'y',[RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+4 RECT.COMMAND_DRAW(2,person.Current(n).pos(2))+1],'Visible','on');
             
     end
