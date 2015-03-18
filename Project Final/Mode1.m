@@ -16,16 +16,16 @@ if isequal(filename,0)||isequal(filename_2,0)
 end
 draw();
 numberofplayers();
-pause(0.2);
+pause(1);
 rectangle('Position',[25 10 25 40]','FaceColor',rand(1,3),'EdgeColor',rand(1,3)); %initial drawing of sprite components
 for g = 1:numel(playerscore)
-text(40, 40-4*g, sprintf('Player %d:  %d in %d turns ',g,playerscore(g),person.Current(g).wincounter),'FontName','Verdana','FontSize',8,'HorizontalAlignment','center','Color',[0 0 0],'Visible','on');
+text(40, 40-4*g, sprintf('Player %d: %d in %d turns ',g,playerscore(g),person.Current(g).wincounter),'FontName','Verdana','FontSize',8,'HorizontalAlignment','center','Color',[0 0 0],'Visible','on');
 image(im{g},'x',[32 29],'y',[42-4*g 39-4*g],'Visible','on');
 end
 pause(5);
 exit = sprintf('The Game is now going to close.');
 set(ScoreInfoHd1,'Visible','on','String',exit);
-pause(0.2); 
+pause(1); 
 delete(MainFigureHdl);
 for g = 1:numel(playerscore)
     fprintf('Player %d placed %d in %d turns\n ',g,playerscore(g),person.Current(g).wincounter);
@@ -39,13 +39,13 @@ function loadfiles()
       h = msgbox('Please pick the Rectangular Command Text File','','warn');
       delete(findobj(h,'string','OK'));
       delete(findobj(h,'style','frame'));
-      pause(0.2);
+      pause(1);
       delete(h);
 [filename, pathname] = uigetfile({'*.txt'},'Commands');
        g = msgbox('Please pick the Dice Rolls Text File','','warn');
        delete(findobj(g,'string','OK'));
        delete(findobj(g,'style','frame'));
-       pause(0.2);
+       pause(1);
        delete(g);
 [filename_2, pathname_2] = uigetfile({'*.txt'},'Dice Rolls');
 if isequal(filename,0)||isequal(filename_2,0)
@@ -202,7 +202,7 @@ while iterator ~= co
       person.Current(n).loseturn = 0;
       turnskip = sprintf('Current Player: %d, will be skipped this turn',n);  
       set(ScoreInfoHd1,'Visible','on','String',turnskip);
-      pause(0.2);
+      pause(1);
         n = n + 1;
         if n >= t+1;
         n = 1;
@@ -223,16 +223,16 @@ while iterator ~= co
     logo_dice = sprintf('Current Player: %d, Current Roll: %d',n,BOARDGAME.DICEROLL(var_1,n));  
    
     set(ScoreInfoHd1,'Visible','on','String',logo_dice);
-        pause(0.2);
+        pause(1);
       
         if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1 
-        pause(0.2);
+        pause(1);
         set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
         ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
-        pause(0.2);
+        pause(1);
         Winner = sprintf('Current Player %d wins!',n);
         set(ScoreInfoHd1,'Visible','on','String',Winner);
-        pause(0.2)
+        pause(1)
          set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+4 RECT.COMMAND_DRAW(1,end)+1]...
         ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','off');
         person.Current(n).winner = 1;
@@ -255,25 +255,25 @@ while iterator ~= co
             set(ScoreInfoHd1,'Visible','on','String',logo_dice);
            person.Current(n).pos(1) =1;
            person.Current(n).pos(2) =1;
-           pause(0.2); 
+           pause(1); 
         end
         
     if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) > 0
-            pause(0.2)
+            pause(1)
             if RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) == 100
             luck = sprintf('Current Player: %d, Goes straight to the finish',n);
             else
             luck = sprintf('Current Player: %d, Gets to move %d spaces',n,RECT.COMMAND_DRAW(5,person.Current(n).pos(1)));
             end
             set(ScoreInfoHd1,'Visible','on','String',luck);
-            pause(0.2);
+            pause(1);
             person.Current(n).pos(1) = person.Current(n).pos(1)+RECT.COMMAND_DRAW(5,person.Current(n).pos(1));
             person.Current(n).pos(2) = person.Current(n).pos(2)+RECT.COMMAND_DRAW(5,person.Current(n).pos(2));
             if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
-            pause(0.2);
+            pause(1);
             set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+5 RECT.COMMAND_DRAW(1,end)+2]...
             ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
-            pause(0.2);
+            pause(1);
             Winner = sprintf('Player %d wins!',n);
             set(ScoreInfoHd1,'Visible','on','String',Winner);
              set(Player(n),'Visible','off');
@@ -289,44 +289,44 @@ while iterator ~= co
             elseif RECT.COMMAND_DRAW(5,person.Current(n).pos(1)) < 0
             luck1 = sprintf('Current Player: %d, moves back by %d spaces',n,abs(RECT.COMMAND_DRAW(5,person.Current(n).pos(1))));
             set(ScoreInfoHd1,'Visible','on','String',luck1);
-            pause(0.2);
+            pause(1);
             person.Current(n).pos(1) = person.Current(n).pos(1)+RECT.COMMAND_DRAW(5,person.Current(n).pos(1));
             person.Current(n).pos(2) = person.Current(n).pos(2)+RECT.COMMAND_DRAW(5,person.Current(n).pos(2));
             
     end
  end
-    pause(0.2);
+    pause(1);
  if ~(person.Current(n).winner == 1);
     if RECT.Rollagain(person.Current(n).prior(1)) == 1 ||RECT.Rollagain(person.Current(n).pos(1)) == 1
             luck2 = sprintf('Current Player: %d, gets to roll again',n);
             set(ScoreInfoHd1,'Visible','on','String',luck2);
-            pause(0.2);
+            pause(1);
             var_1 = var_1 + 1;
             diceroll = BOARDGAME.DICEROLL(var_1,n);
             person.Current(n).pos(1) = person.Current(n).pos(1)+diceroll;
             person.Current(n).pos(2) = person.Current(n).pos(2)+diceroll;
             logo_dice = sprintf('Current Player: %d, Rolled: %d',n,BOARDGAME.DICEROLL(var_1,n));  
             set(ScoreInfoHd1,'Visible','on','String',logo_dice);
-            pause(0.2);
+            pause(1);
             var_1 = var_1 - 1;
             elseif RECT.loseturn(person.Current(n).pos(1)) == 1
             luck3 = sprintf('Current Player: %d, loses a turn',n);
             set(ScoreInfoHd1,'Visible','on','String',luck3);
             person.Current(n).loseturn = 1;
-            pause(0.2);
+            pause(1);
             elseif  RECT.gotostart(person.Current(n).pos(1)) == 1
                 person.Current(n).pos(1) =1;
                 person.Current(n).pos(2) =1;
                 luck4 = sprintf('Current Player: %d, goes back to the start',n);
                 set(ScoreInfoHd1,'Visible','on','String',luck4);
-                pause(0.2);
+                pause(1);
             end
             
             if person.Current(n).pos(1) >= co_1 || person.Current(n).pos(2) >= co_1
-            pause(0.2);
+            pause(1);
             set(Player(n),'x',[RECT.COMMAND_DRAW(1,end)+5 RECT.COMMAND_DRAW(1,end)+2]...
             ,'y',[RECT.COMMAND_DRAW(2,end)+4 RECT.COMMAND_DRAW(2,end)+1],'Visible','on');
-            pause(0.2);
+            pause(1);
             Winner = sprintf('Player %d wins!',n);
             set(ScoreInfoHd1,'Visible','on','String',Winner);
             set(Player(n),'Visible','off');
