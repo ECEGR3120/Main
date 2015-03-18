@@ -1,13 +1,15 @@
+repeat_program=1;%sets repeat program to 1.
+while repeat_program==1%repeats entire program until repeat_program ~= 1.
 Gamemode=menu('Which game mode would you like to play?','1 - Automatic','2 - Player Run');%asks the user which gamemode they wish to run.
 switch Gamemode %switches gamemode.
     case 1 %if case 1 it runs mode 1.
+        clear all;
         Mode1;
-        return;
     case 2     %If case 2 then run rest of main.
+        clear all;
 boardgame %plays the function boardgame.
 board_tiles %plays the function board_tiles.
 number_players=menu('How many players?','1','2','3','4'); %sets # of players.
-%current_turn=1; %sets variable current-turn to 1.
 finish_line=[];%sets finish_line to an empty vector.
 for i=1:4 %loops from 1 to 4 (max number of players possible).
     player(i)= struct('position',17,'num',i,'character_side',0,'character_back',0,'current_image',0,'turns',0,'skip',0,'name','something'); %creates a structure "player" for players 1 to 4.
@@ -39,11 +41,10 @@ while (player(1).position<17)|(player(2).position<17)|(player(3).position<17)|(p
             end
         end
     end
-    %current_turn=current_turn+1;
 end
 box=rectangle('position',[150 100 200 300],'FaceColor', 'b','EdgeColor', [0 0 0], 'LineWidth', 4);%creats a box on the board.
 y=65;%sets y to 65.
-y_im=65%sets y_im to 65.
+y_im=65;%sets y_im to 65.
 for g=1:number_players %loops for 1 to total number of players playing.
     y=y-65;%counts down by 65 for each loop.
     y_im=y_im-65;%counts down by 65 for each loop.
@@ -53,4 +54,6 @@ end
     otherwise %displays error if neither mode is selected.
        msgbox('No option picked, quitting game','','warn')   
        return;
+end
+repeat_program=menu('Run program again?','Yes','No');%asks the user if they want to run the program again.
 end
