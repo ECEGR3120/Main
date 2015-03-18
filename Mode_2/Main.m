@@ -4,6 +4,10 @@ switch Gamemode
         Mode1;
         return;
     case 2
+        
+    otherwise 
+       msgbox('No option picked, quitting game','','warn')   
+       return;
 end
 boardgame
 board_tiles
