@@ -133,7 +133,11 @@ function numberofplayers()
 ScoreInfoHd1 = text(50,-10, 'Current Player:','FontName','Arial','FontSize',20,'HorizontalAlignment','center','Color',[0 0 0],'Visible','off');
 set(BOARDGAME.title,'Visible','on');
 t = 0;
+<<<<<<< HEAD
 im = {};
+=======
+im = {};    
+>>>>>>> be6390382ad37ca63ab66d8b75c785bf28c2c5c9
 for n = 1:co
 im{n} = imread(sprintf('sprite%d.png',n));
 Player(n) = image(im{n},'x',[RECT.COMMAND_DRAW(1,1)+4 RECT.COMMAND_DRAW(1,1)+1],'y',[RECT.COMMAND_DRAW(2,1)+4+n RECT.COMMAND_DRAW(2,1)+1+n],'Visible','on');
