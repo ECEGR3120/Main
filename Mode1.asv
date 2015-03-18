@@ -8,12 +8,8 @@ RECT.COMMAND = [];
 BOARDGAME.DICEROLL = [];    % DICEROLL(a b) where a is roll number, and b is the player number
 RECT.COMMAND_DRAW = [];        % x-coordinate of the rectangle
 
+
 loadfiles();
-if isequal(filename,0)||isequal(filename_2,0)
-    msgbox('Exiting Game','','warn')
-    clear all;
-    return;
-end
 draw();
 numberofplayers();
 pause(1.5);
@@ -30,7 +26,9 @@ function loadfiles()
 [filename, pathname] = uigetfile({'*.txt'},'Commands');
 [filename_2, pathname_2] = uigetfile({'*.txt'},'Dice Rolls');
 if isequal(filename,0)||isequal(filename_2,0)
-
+    msgbox('Exiting Game','','warn')
+    delete(MainFigureHdl);
+clear all;
     return;
 else
     BOARDGAME.COMMAND_TEXT_FILE = fopen(strcat(pathname,filename));
