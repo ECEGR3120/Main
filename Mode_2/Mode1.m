@@ -8,8 +8,12 @@ RECT.COMMAND = [];
 BOARDGAME.DICEROLL = [];    % DICEROLL(a b) where a is roll number, and b is the player number
 RECT.COMMAND_DRAW = [];        % x-coordinate of the rectangle
 
-
 loadfiles();
+if isequal(filename,0)||isequal(filename_2,0)
+    msgbox('Exiting Game','','warn')
+    clear all;
+    return;
+end
 draw();
 numberofplayers();
 pause(1.5);
@@ -26,9 +30,7 @@ function loadfiles()
 [filename, pathname] = uigetfile({'*.txt'},'Commands');
 [filename_2, pathname_2] = uigetfile({'*.txt'},'Dice Rolls');
 if isequal(filename,0)||isequal(filename_2,0)
-    msgbox('Exiting Game','','warn')
-    delete(MainFigureHdl);
-clear all;
+
     return;
 else
     BOARDGAME.COMMAND_TEXT_FILE = fopen(strcat(pathname,filename));
@@ -131,7 +133,7 @@ function numberofplayers()
 ScoreInfoHd1 = text(50,-10, 'Current Player:','FontName','Arial','FontSize',20,'HorizontalAlignment','center','Color',[0 0 0],'Visible','off');
 set(BOARDGAME.title,'Visible','on');
 t = 0;
-im = {};
+im = {};    
 for n = 1:co
 im{n} = imread(sprintf('sprite%d.png',n));
 Player(n) = image(im{n},'x',[RECT.COMMAND_DRAW(1,1)+4 RECT.COMMAND_DRAW(1,1)+1],'y',[RECT.COMMAND_DRAW(2,1)+4+n RECT.COMMAND_DRAW(2,1)+1+n],'Visible','on');

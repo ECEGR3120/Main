@@ -1,4 +1,10 @@
-
+Gamemode=menu('Which game mode would you like to play?','1 - Automatic','2 - Player Run');
+switch Gamemode
+    case 1
+        Mode1;
+        return;
+    case 2
+end
 boardgame
 board_tiles
 %lakitu = image([400 572],[0 172],imread('lakitu.png'));
