@@ -27,15 +27,12 @@ return;
 
 %% File Loading
 function loadfiles()
-      h = msgbox('Please pick the Rectangular Command Text File','','warn')
-      pause(1);
-      delete(h);
+      msgbox('Please pick the Rectangular Command Text File','','warn')
 [filename, pathname] = uigetfile({'*.txt'},'Commands');
-       g = msgbox('Please pick the Dice Rolls Text File','','warn')
-       pause(1);
-       delete(g);
+       msgbox('Please pick the Dice Rolls Text File','','warn')
 [filename_2, pathname_2] = uigetfile({'*.txt'},'Dice Rolls');
 if isequal(filename,0)||isequal(filename_2,0)
+
     return;
 else
     BOARDGAME.COMMAND_TEXT_FILE = fopen(strcat(pathname,filename));
